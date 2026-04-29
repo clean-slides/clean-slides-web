@@ -28,7 +28,7 @@ export const onAuthenticateUser = async () => {
       data: {
         clerkId: user.id,
         email: user.emailAddresses[0].emailAddress,
-        name: user.firstName + " " + user.lastName,
+        name: user.firstName + (user.lastName ? " " + user.lastName : ""),
         profileImage: user.imageUrl,
       },
     })
@@ -40,6 +40,6 @@ export const onAuthenticateUser = async () => {
     return { status: 400 }
   } catch (error) {
     console.log("🗿 Error", error)
-    return { status: 500, error: "Internal server error"}
+    return { status: 500, error: "Internal server error" }
   }
 }
